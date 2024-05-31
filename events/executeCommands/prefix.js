@@ -14,7 +14,7 @@ module.exports = {
 
     if (command.dm !== true && message.channel.type === 1) return;
     if (command.botOwnerOnly && !client.config.owner.includes(message.author.id)) return;
-    if (command.permissions && !message.member.permissions.has(command.permissions)) return;
+    if (command.permissions && !message.member.permissions.has(command.permissions) && !client.config.owner.includes(message.author.id)) return;
 
     try {
       command.executePrefix(client, message, args);

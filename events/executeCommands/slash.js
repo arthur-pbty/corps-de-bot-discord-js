@@ -12,7 +12,7 @@ module.exports = {
     if (command.botOwnerOnly && !client.config.owner.includes(interaction.user.id)) {
       return interaction.reply({ content: 'Cette commande est réservée au propriétaire du bot.', ephemeral: true });
     }
-    if (command.permissions && !interaction.member.permissions.has(command.permissions)) {
+    if (command.permissions && !interaction.member.permissions.has(command.permissions) && !client.config.owner.includes(message.author.id)) {
       return interaction.reply({ content: 'Vous n\'avez pas la permission d\'utiliser cette commande.', ephemeral: true });
     }
 
