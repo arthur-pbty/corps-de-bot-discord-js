@@ -12,6 +12,10 @@ module.exports = {
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if (!command) return;
 
+    if (command.dm !== true && message.channel.type === 1) return;
+    if (command.botOwnerOnly && !client.config.owner.includes(message.author.id)) return;
+    if (command.permissions && !message.member.permissions.has(command.permissions)) return;
+
     try {
       command.executePrefix(client, message, args);
     } catch (error) {
