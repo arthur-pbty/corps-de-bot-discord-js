@@ -1,0 +1,26 @@
+{
+  "name": "corps-de-bot-discord-js",
+  "version": "1.0.0",
+  "description": "Le corp de base d'un bon bot discord en Java Script.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arthur.pbty",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arthur-pbty/corps-de-bot-discord-js.git"
+  },
+  "readme": "README.md",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.4.5"
+  }
+}
