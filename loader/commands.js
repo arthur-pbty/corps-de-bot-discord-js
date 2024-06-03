@@ -25,7 +25,16 @@ module.exports = (client) => {
           } else if (stats.isFile() && file.endsWith('.js')) {
             try {
               const command = require(filePath);
-              let commandName = command.name || file.split('.')[0];
+              const commandName = command.name || file.split('.')[0];
+              if (!command.category) {
+                const parentDir = path.basename(path.dirname(filePath));
+                command.category = parentDir === 'commands' ? 'other' : parentDir;
+              }
+              if (!command.dm) command.dm = false;
+              if (!command.botOwnerOnly) command.botOwnerOnly = false;
+              if (!command.permissions) command.permissions = [];
+              if (!command.aliases) command.aliases = [];
+              if (!command.description) command.description = 'Aucune description.';
               client.commands.set(commandName, command);
               delete require.cache[require.resolve(filePath)];
             } catch (error) {

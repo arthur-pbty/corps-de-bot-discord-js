@@ -14,7 +14,7 @@ module.exports = {
 
     try {
       command.executeSlash(client, interaction);
-      console.log(`[CMD - SLASH] ${interaction.user.tag} | ${interaction.commandName} | [${interaction.guild.name} - ${interaction.channel.name}]`);
+      console.log(`[CMD - SLASH] ${interaction.user.tag} | ${interaction.commandName}`);
     } catch (error) {
       console.error(`Erreur lors de l'exécution de la commande slash '${interaction.commandName}':`, error);
     }

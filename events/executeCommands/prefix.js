@@ -20,7 +20,7 @@ module.exports = {
 
     try {
       command.executePrefix(client, message, args);
-      console.log(`[CMD - PREFIX] ${message.author.tag} | ${commandName} | [${message.guild.name} - ${message.channel.name}]`);
+      console.log(`[CMD - PREFIX] ${message.author.tag} | ${commandName}`);
     } catch (error) {
       console.error(`Erreur lors de l'exécution de la commande '${commandName}':`, error);
     }
