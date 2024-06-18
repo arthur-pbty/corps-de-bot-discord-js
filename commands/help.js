@@ -1,21 +1,22 @@
 const { SlashCommandBuilder, PermissionsBitField } = require("discord.js");
 
 const command = {
-  name: "ping",
-  description: "Affiche le ping du bot.",
-  aliases: ['pong', 'latency'],
-  permissions: [PermissionsBitField.Flags.KickMembers, PermissionsBitField.Flags.BanMembers],
+  name: "help",
+  description: "Affiche la liste des commandes.",
+  aliases: ['aide', 'h'],
+  permissions: [],
   botOwnerOnly: false,
   dm: true,
 
   async executePrefix(client, message, args) {
-    const texte = args[0]; 
-    message.reply(`🏓 **Mon ping est de :** ${client.ws.ping} ms.`).catch(() => {});
+    const command = args[0];
+    const commands = client.commands;
+    
   },
 
   async executeSlash(client, interaction) {
-    const texte = interaction.options.getString('texte'); 
-    interaction.reply(`🏓 **Mon ping est de :** ${client.ws.ping} ms.`).catch(() => {});
+    const command = interaction.options.getString('commande');
+    const commands = client.commands;
   }
 }
 
@@ -32,7 +33,11 @@ command.data = new SlashCommandBuilder()
   .setDescription(command.description)
   .setDMPermission(command.dm)
   .setDefaultMemberPermissions(default_member_permissions)
-  // ajouter ici les option de la commande slash
+  .addStringOption(option => 
+    option.setName('commande')
+      .setDescription('Commande à affiche')
+      .setRequired(false)
+  );
 
 let utilisation = '';
 
