@@ -1,6 +1,23 @@
 const { SlashCommandBuilder, PermissionsBitField } = require("discord.js");
 
+/**
+ * Ajoute une nouvelle commande au bot.
+ * 
+ * @param {string} name - Le nom de la commande.
+ * @param {string} description - La description de la commande.
+ * @param {Array<string>} aliases - Les alias de la commande.
+ * @param {Array<PermissionsBitField>} permissions - Les permissions nécessaires pour exécuter la commande.
+ * @param {boolean} botOwnerOnly - Si la commande est réservée au propriétaire du bot.
+ * @param {boolean} dm - Si la commande peut être exécutée en message privé.
+ * @param {Function} executePrefix - La fonction à exécuter avec un préfixe.
+ * @param {Function} executeSlash - La fonction à exécuter comme commande slash.
+ * @param {Array<Object>} slashOptions - Les options pour la commande slash.
+ * 
+ * @returns {void} Ne retourne rien.
+ */
 function addCommand(name, description, aliases, permissions, botOwnerOnly, dm, executePrefix, executeSlash, slashOptions) {
+
+  
   if (!name) return console.error('Le nom de la commande est requis.');
   name = name.toString();
   name = name.toLowerCase();
@@ -33,7 +50,6 @@ function addCommand(name, description, aliases, permissions, botOwnerOnly, dm, e
     return console.error('La fonction executeSlash doit avoir les paramètres "client" et "interaction".');
   }
   
-
   
   const command = {
     name,
@@ -60,27 +76,17 @@ function addCommand(name, description, aliases, permissions, botOwnerOnly, dm, e
     .setDMPermission(command.dm)
     .setDefaultMemberPermissions(default_member_permissions)
 
-    for (const key in slashOptions) {
-      if (slashOptions.hasOwnProperty(key)) {
-        const value = slashOptions[key];
+    for (const key in command.data) {
+      if (command.data.hasOwnProperty(key)) {
+        const value = command.data[key];
     
-        if (value !== undefined) {
-          command.data[key] = value;
-        }
-    
-        if (key === 'options' && Array.isArray(value)) {
-          command.data.options = value.map(option => {
-            let optionData = {};
-            for (const optionKey in option) {
-              if (option.hasOwnProperty(optionKey) && option[optionKey] !== undefined) {
-                optionData[optionKey] = option[optionKey];
-              }
-            }
-            return optionData;
-          });
+        if (value !== undefined && key !== 'options') {
+          slashOptions[key] = value;
         }
       }
     }
+
+    command.data = slashOptions
 
 
   let utilisation = '';

@@ -8,7 +8,7 @@ module.exports = addCommand(
   this.permissions = [],
   this.botOwnerOnly = false,
   this.dm = true,
-  
+
   this.executePrefix = async (client, message, args) => {
     message.reply('Commande exemple.').catch(() => {});
   },

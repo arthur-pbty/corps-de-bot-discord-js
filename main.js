@@ -24,4 +24,6 @@ client.config = require("./config.json");
 require('./loader/events.js')(client);
 require('./loader/commands.js')(client);
 
+
+
 client.login(process.env.TOKEN);
