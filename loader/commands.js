@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
+const { Collection } = require('discord.js');
 
 module.exports = (client) => {
-  client.commands = new Map();
+  client.commands = new Collection();
 
   function loadCommandsFromDirectory(directory) {
     fs.readdir(directory, (err, files) => {
