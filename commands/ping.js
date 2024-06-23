@@ -21,7 +21,7 @@ module.exports = addCommand(
     const embed = new EmbedBuilder()
       .setTitle('Pong !')
       .setDescription(`La latence du bot est de \`${client.ws.ping}\`ms.`)
-      .setColor('#0000FF')
+      .setColor('#0099FF')
       .setTimestamp()
       .setFooter({ text: `Demandé par ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
   
@@ -34,7 +34,7 @@ module.exports = addCommand(
       const embed = new EmbedBuilder()
         .setTitle('Pong !')
         .setDescription(`La latence du bot est de \`${client.ws.ping}\`ms.`)
-        .setColor('#0000FF')
+        .setColor('#0099FF')
         .setTimestamp()
         .setFooter({ text: `Demandé par ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
       
@@ -46,7 +46,7 @@ module.exports = addCommand(
       const embed = new EmbedBuilder()
         .setTitle('Pong !')
         .setDescription(`La latence du bot est de \`${client.ws.ping}\`ms.`)
-        .setColor('#0000FF')
+        .setColor('#0099FF')
         .setTimestamp()
         .setFooter({ text: `Demandé par ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
   
@@ -66,7 +66,7 @@ module.exports = addCommand(
     const embed = new EmbedBuilder()
       .setTitle('Pong !')
       .setDescription(`La latence du bot est de \`${client.ws.ping}\`ms.`)
-      .setColor('#0000FF')
+      .setColor('#0099FF')
       .setTimestamp()
       .setFooter({ text: `Demandé par ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() });
 
@@ -80,7 +80,7 @@ module.exports = addCommand(
         const embed = new EmbedBuilder()
           .setTitle('Pong !')
           .setDescription(`La latence du bot est de \`${client.ws.ping}\`ms.`)
-          .setColor('#0000FF')
+          .setColor('#0099FF')
           .setTimestamp()
           .setFooter({ text: `Demandé par ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() });
         
@@ -92,7 +92,7 @@ module.exports = addCommand(
         const embed = new EmbedBuilder()
           .setTitle('Pong !')
           .setDescription(`La latence du bot est de \`${client.ws.ping}\`ms.`)
-          .setColor('#0000FF')
+          .setColor('#0099FF')
           .setTimestamp()
           .setFooter({ text: `Demandé par ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() });
     
@@ -105,7 +105,7 @@ module.exports = addCommand(
         const embed = new EmbedBuilder()
           .setTitle('Pong !')
           .setDescription(`La latence du bot est de \`${client.ws.ping}\`ms.`)
-          .setColor('#0000FF')
+          .setColor('#0099FF')
           .setTimestamp()
           .setFooter({ text: `Demandé par ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() });
 
