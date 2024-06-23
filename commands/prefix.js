@@ -1,5 +1,5 @@
 const addCommand = require('../fonctions/addCommand');
-const { SlashCommandBuilder, ButtonStyle, ButtonBuilder, ActionRowBuilder, EmbedBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const getPrefix = require('../fonctions/getPrefix');
 
 module.exports = addCommand(
