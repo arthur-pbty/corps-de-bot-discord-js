@@ -1,4 +1,5 @@
 require('dotenv').config();
+const getPrefix = require('../../fonctions/getPrefix');
 
 module.exports = {
   name: 'messageCreate',
@@ -6,9 +7,15 @@ module.exports = {
     if (!message || !message.author) return;
     if (message.author.bot) return;
     if (!message.content) return;
-    if (!message.content.startsWith(process.env.PREFIX)) return;
+    let prefix;
+    if (message.channel.type === 1) {
+      prefix = await getPrefix(message.channel.id);
+    } else {
+      prefix = await getPrefix(message.guild.id);
+    }
+    if (!message.content.startsWith(prefix)) return;
 
-    const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/);
+    const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
 
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));

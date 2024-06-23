@@ -11,7 +11,12 @@ module.exports = addCommand(
   this.dm = true,
 
   this.executePrefix = async (client, message, args) => {
-    const prefix = await getPrefix(message.guild.id);
+    let prefix
+    if (message.channel.type === 1) {
+      prefix = await getPrefix(message.channel.id);
+    } else {
+      prefix = await getPrefix(message.guild.id);
+    }
     const embed = new EmbedBuilder()
       .setTitle('Préfixe du Bot')
       .setDescription(`Le préfixe actuel du bot est: \`${prefix}\``)
