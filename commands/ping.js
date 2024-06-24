@@ -14,7 +14,6 @@ module.exports = addCommand(
   (this.permissions = []),
   (this.botOwnerOnly = false),
   (this.dm = true),
-
   (this.executePrefix = async (client, message, args) => {
     const pingBtn = new ButtonBuilder()
       .setCustomId("pingBtn")
@@ -77,7 +76,6 @@ module.exports = addCommand(
       sendMessage.edit({ embeds: [embed], components: [] });
     });
   }),
-
   (this.executeSlash = async (client, interaction) => {
     const pingBtn = new ButtonBuilder()
       .setCustomId("pingBtn")
@@ -161,7 +159,6 @@ module.exports = addCommand(
       }, 120000);
     }
   }),
-
   (this.slashOptions = new SlashCommandBuilder().addBooleanOption((option) =>
     option
       .setName("actualiser")

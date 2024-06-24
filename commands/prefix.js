@@ -9,7 +9,6 @@ module.exports = addCommand(
   (this.permissions = []),
   (this.botOwnerOnly = false),
   (this.dm = true),
-
   (this.executePrefix = async (client, message, args) => {
     let prefix;
     if (message.channel.type === 1) {
@@ -25,7 +24,6 @@ module.exports = addCommand(
 
     message.reply({ embeds: [embed] });
   }),
-
   (this.executeSlash = async (client, interaction) => {
     const prefix = await getPrefix(interaction.guild.id);
     const embed = new EmbedBuilder()
@@ -36,6 +34,5 @@ module.exports = addCommand(
 
     await interaction.reply({ embeds: [embed] });
   }),
-
   (this.slashOptions = new SlashCommandBuilder()),
 );

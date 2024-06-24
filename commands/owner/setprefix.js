@@ -1,7 +1,11 @@
-const addCommand = require("../fonctions/addCommand");
-const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require("discord.js");
-const getPrefix = require("../fonctions/getPrefix");
-const db = require("../fonctions/setDatabase");
+const addCommand = require("../../fonctions/addCommand");
+const {
+  SlashCommandBuilder,
+  EmbedBuilder,
+  PermissionsBitField,
+} = require("discord.js");
+const getPrefix = require("../../fonctions/getPrefix");
+const db = require("../../fonctions/setDatabase");
 
 module.exports = addCommand(
   (this.name = "setprefix"),
@@ -10,7 +14,6 @@ module.exports = addCommand(
   (this.permissions = [PermissionsBitField.Flags.Administrator]),
   (this.botOwnerOnly = false),
   (this.dm = true),
-
   (this.executePrefix = async (client, message, args) => {
     const newPrefix = args[0];
     if (!newPrefix) return message.reply("Vous devez spécifier un préfixe.");
@@ -37,7 +40,9 @@ module.exports = addCommand(
         }
         const embed = new EmbedBuilder()
           .setTitle("Préfixe modifié")
-          .setDescription(`Le préfixe du bot a été modifié pour \`${newPrefix}\`.`)
+          .setDescription(
+            `Le préfixe du bot a été modifié pour \`${newPrefix}\`.`,
+          )
           .setColor("#0099FF")
           .setTimestamp()
           .setFooter({
@@ -49,10 +54,10 @@ module.exports = addCommand(
       },
     );
   }),
-
   (this.executeSlash = async (client, interaction) => {
     const newPrefix = interaction.options.getString("prefix");
-    if (!newPrefix) return interaction.reply("Vous devez spécifier un préfixe.");
+    if (!newPrefix)
+      return interaction.reply("Vous devez spécifier un préfixe.");
     if (newPrefix.length > 5)
       return interaction.reply("Le préfixe ne doit pas dépasser 5 caractères.");
 
@@ -64,7 +69,9 @@ module.exports = addCommand(
     }
 
     if (newPrefix === prefix)
-      return interaction.reply("Le préfixe spécifié est déjà le préfixe actuel.");
+      return interaction.reply(
+        "Le préfixe spécifié est déjà le préfixe actuel.",
+      );
 
     db.run(
       `INSERT OR REPLACE INTO prefix (guildId, prefix) VALUES (?, ?)`,
@@ -76,7 +83,9 @@ module.exports = addCommand(
         }
         const embed = new EmbedBuilder()
           .setTitle("Préfixe modifié")
-          .setDescription(`Le préfixe du bot a été modifié pour \`${newPrefix}\`.`)
+          .setDescription(
+            `Le préfixe du bot a été modifié pour \`${newPrefix}\`.`,
+          )
           .setColor("#0099FF")
           .setTimestamp()
           .setFooter({
@@ -88,12 +97,10 @@ module.exports = addCommand(
       },
     );
   }),
-
-  (this.slashOptions = new SlashCommandBuilder()
-    .addStringOption((option) =>
-      option
-        .setName("prefix")
-        .setDescription("Le nouveau préfixe du bot.")
-        .setRequired(true),
-    )),
+  (this.slashOptions = new SlashCommandBuilder().addStringOption((option) =>
+    option
+      .setName("prefix")
+      .setDescription("Le nouveau préfixe du bot.")
+      .setRequired(true),
+  )),
 );
