@@ -30,7 +30,11 @@ module.exports = addCommand(
             "La commande spécifiée n'existe pas. Veuillez réessayer.",
           )
           .setColor("#0099FF")
-          .setTimestamp();
+          .setTimestamp()
+          .setFooter({
+            text: `Demandé par ${message.author.tag}`,
+            iconURL: message.author.displayAvatarURL(),
+          });
 
         return message.reply({ embeds: [embed] });
       }
@@ -41,7 +45,11 @@ module.exports = addCommand(
           `> **Description :** ${command.description}\n> **Utilisation :** \`${command.utilisation}\`\n> **Catégorie :** ${command.category}`,
         )
         .setColor("#0099FF")
-        .setTimestamp();
+        .setTimestamp()
+        .setFooter({
+          text: `Demandé par ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL(),
+        });
 
       return message.reply({ embeds: [embed] });
     }
@@ -70,7 +78,7 @@ module.exports = addCommand(
       )
       .setColor("#0099FF")
       .setTimestamp()
-      .setFooter({ 
+      .setFooter({
         text: `Page 1/${categories.size + 1} - Demandé par ${message.author.tag}`,
         iconURL: message.author.displayAvatarURL(),
       });
@@ -95,7 +103,7 @@ module.exports = addCommand(
         )
         .setColor("#0099FF")
         .setTimestamp()
-        .setFooter({ 
+        .setFooter({
           text: `Page ${categoriesArray.indexOf(category) + 2}/${categories.size + 1} - Demandé par ${message.author.tag}`,
           iconURL: message.author.displayAvatarURL(),
         });
@@ -177,7 +185,11 @@ module.exports = addCommand(
             "La commande spécifiée n'existe pas. Veuillez réessayer.",
           )
           .setColor("#0099FF")
-          .setTimestamp();
+          .setTimestamp()
+          .setFooter({
+            text: `Demandé par ${interaction.user.tag}`,
+            iconURL: message.author.displayAvatarURL(),
+          });
 
         return interaction.reply({ embeds: [embed] });
       }
@@ -188,7 +200,11 @@ module.exports = addCommand(
           `> **Description :** ${command.description}\n> **Utilisation :** \`${command.utilisation}\`\n> **Catégorie :** ${command.category}`,
         )
         .setColor("#0099FF")
-        .setTimestamp();
+        .setTimestamp()
+        .setFooter({
+          text: `Demandé par ${interaction.user.tag}`,
+          iconURL: message.author.displayAvatarURL(),
+        });
 
       return interaction.reply({ embeds: [embed] });
     }
@@ -207,7 +223,7 @@ module.exports = addCommand(
         categories.add(command.category);
       }
     });
-    
+
     const categoriesArray = Array.from(categories);
 
     const welcomeEmbed = new EmbedBuilder()
@@ -217,7 +233,7 @@ module.exports = addCommand(
       )
       .setColor("#0099FF")
       .setTimestamp()
-      .setFooter({ 
+      .setFooter({
         text: `Page 1/${categories.size + 1} - Demandé par ${interaction.user.tag}`,
         iconURL: interaction.user.displayAvatarURL(),
       });
