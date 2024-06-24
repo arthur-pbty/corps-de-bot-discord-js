@@ -33,7 +33,7 @@ module.exports = (client) => {
               if (!command.category) {
                 const parentDir = path.basename(path.dirname(filePath));
                 command.category =
-                  parentDir === "commands" ? "other" : parentDir;
+                  parentDir === "commands" ? "🌟・Other" : parentDir;
               }
               if (!command.dm) command.dm = false;
               if (!command.botOwnerOnly) command.botOwnerOnly = false;

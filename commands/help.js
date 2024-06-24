@@ -61,13 +61,19 @@ module.exports = addCommand(
       }
     });
 
+    const categoriesArray = Array.from(categories);
+
     const welcomeEmbed = new EmbedBuilder()
       .setTitle("📚・Accueil")
       .setDescription(
         `Voici le panel d'aide du bot. Pour plus d'informations sur une commande, utilisez \`${prefix}help <commande>\``,
       )
       .setColor("#0099FF")
-      .setTimestamp();
+      .setTimestamp()
+      .setFooter({ 
+        text: `Page 1/${categories.size + 1} - Demandé par ${message.author.tag}`,
+        iconURL: message.author.displayAvatarURL(),
+      });
 
     function createEmbedByCategory(client, category) {
       const commands = [];
@@ -88,7 +94,11 @@ module.exports = addCommand(
             .join("\n\n"),
         )
         .setColor("#0099FF")
-        .setTimestamp();
+        .setTimestamp()
+        .setFooter({ 
+          text: `Page ${categoriesArray.indexOf(category) + 2}/${categories.size + 1} - Demandé par ${message.author.tag}`,
+          iconURL: message.author.displayAvatarURL(),
+        });
 
       return embed;
     }
@@ -197,6 +207,8 @@ module.exports = addCommand(
         categories.add(command.category);
       }
     });
+    
+    const categoriesArray = Array.from(categories);
 
     const welcomeEmbed = new EmbedBuilder()
       .setTitle("📚・Accueil")
@@ -204,7 +216,11 @@ module.exports = addCommand(
         `Voici le panel d'aide du bot. Pour plus d'informations sur une commande, utilisez \`${prefix}help <commande>\``,
       )
       .setColor("#0099FF")
-      .setTimestamp();
+      .setTimestamp()
+      .setFooter({ 
+        text: `Page 1/${categories.size + 1} - Demandé par ${interaction.user.tag}`,
+        iconURL: interaction.user.displayAvatarURL(),
+      });
 
     function createEmbedByCategory(client, category) {
       const commands = [];
@@ -225,7 +241,11 @@ module.exports = addCommand(
             .join("\n\n"),
         )
         .setColor("#0099FF")
-        .setTimestamp();
+        .setTimestamp()
+        .setFooter({
+          text: `Page ${categoriesArray.indexOf(category) + 2}/${categories.size + 1} - Demandé par ${interaction.user.tag}`,
+          iconURL: interaction.user.displayAvatarURL(),
+        });
 
       return embed;
     }
